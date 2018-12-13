@@ -11,29 +11,35 @@ class OwnerController extends Controller
     //
 
     function create_Owner_Vehicle(Request $request){
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string'
-        ]);
-        $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-        $user->save();
-        $scope= new Scope([
-            'name'=>'Owner',
+        try{
+            $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|string|email|unique:users',
+                'password' => 'required|string'
+            ]);
+            $user = new User([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
+            ]);
+            $user->save();
+            $scope= new Scope([
+                'name'=>'Owner',
+                'user_id'=>$user->id
+            ]);
+            $scope->save(); 
+            $owner = new Owner([
             'user_id'=>$user->id
-        ]);
-        $scope->save(); 
-        $owner = new Owner([
-           'user_id'=>$user->id
-        ]);
-        $owner->save();
-        return response()->json([
-            'message' => 'Successfully created Owner'
-        ], 201);
+            ]);
+            $owner->save();
+            return response()->json([
+                'message' => 'Successfully created Owner'
+            ], 201);
+        }catch(Exception $e){
+            return response()->json([
+                'message' => 'Error'
+            ], 404);      
+        }
     }
 
     function getAll_OwnerVehicle(){
@@ -56,8 +62,5 @@ class OwnerController extends Controller
                 'message' => 'Error'
             ], 404);          
         }
-       
-
-
     }
 }

@@ -47,7 +47,7 @@ class OwnerController extends Controller
             $owners_vehicle=Owner::All();
             $arr_owners_vechicle=array();    
             foreach ($owners_vehicle as $owner) {
-                $user=User::find($owner->user_id);
+                $user=User::findOrFail($owner->user_id);
                 array_push($arr_owners_vechicle,         
                     ['name' => $user['name'],
                      'email' =>  $user['email'],

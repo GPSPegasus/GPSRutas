@@ -35,8 +35,14 @@ Route::group([
         'prefix' => 'admin',
         'middleware' => 'auth:api','scope:Admin'
       ], function() {
+          //Owner
           Route::post('create_Owner_Vehicle', 'OwnerController@create_Owner_Vehicle');
-          Route::get('getAll_OwnerVehicle', 'OwnerController@getAll_OwnerVehicle');         
+          Route::get('getAll_OwnerVehicle', 'OwnerController@getAll_OwnerVehicle');
+
+          //Vehicle
+          Route::post('create_Vehicle', 'VehicleController@create_Vehicle');
+          Route::get('getAll_Vehicles', 'VehicleController@getAll_Vehicles');    
+          Route::post('changeState_Vehicle', 'VehicleController@changeState_Vehicle');     
     });
 
 });

@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Passport::routes();
-        Passport::tokensExpireIn(Carbon::now()->addMinutes(5));
+        Passport::tokensExpireIn(Carbon::now()->addMinutes(10));
         Passport::tokensCan([
             'Admin'=> 'Admin_Scope',
             'Owner'=> 'Owner_Scope',

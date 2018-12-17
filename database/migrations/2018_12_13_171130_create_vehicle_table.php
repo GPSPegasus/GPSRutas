@@ -16,10 +16,10 @@ class CreateVehicleTable extends Migration
         Schema::create('vehicle', function (Blueprint $table) {
             $table->increments('id');
             $table->string('imei');
-            $table->string('status_vehicle');
+            $table->boolean('status_vehicle')->default(true);
             $table->unsignedInteger('owner_vehicle_id');
             $table->string('device_count_id');
-            $table->unsignedInteger('group_id')->default(0);
+            $table->unsignedInteger('group_id')->nullable();
             $table->foreign('owner_vehicle_id')->references('id')->on('owner_vehicle');
             $table->foreign('group_id')->references('id')->on('group_vehicle');
             $table->timestamps();

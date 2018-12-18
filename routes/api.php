@@ -37,13 +37,24 @@ Route::group([
         'middleware' => 'auth:api','scope:Admin'
       ], function() {
           //Owner
-          Route::post('create_Owner_Vehicle', 'OwnerController@create_Owner_Vehicle');
+          Route::put('create_Owner_Vehicle', 'OwnerController@create_Owner_Vehicle');
           Route::get('getAll_OwnerVehicle', 'OwnerController@getAll_OwnerVehicle');
 
           //Vehicle
-          Route::post('create_Vehicle', 'VehicleController@create_Vehicle');
+          Route::put('create_Vehicle', 'VehicleController@create_Vehicle');
           Route::get('getAll_Vehicles', 'VehicleController@getAll_Vehicles');    
-          Route::post('changeState_Vehicle', 'VehicleController@changeState_Vehicle');     
+          Route::patch('changeState_Vehicle', 'VehicleController@changeState_Vehicle');   
+          
+          //Group
+          Route::put('create_Group', 'GroupController@create_Group');
+          Route::get('getAll_Groups', 'GroupController@getAll_Groups');    
+          Route::get('get_Vehicle_Group', 'GroupController@get_Vehicle_Group');
+          Route::delete('remove_Vehicle_Group', 'GroupController@remove_Vehicle_Group');  
+          Route::put('add_Vehicles', 'GroupController@add_Vehicles');  
+          Route::get('getAll_Geofences_Group', 'GroupController@getAll_Geofences_Group');    
+         
+
+         
     });
 
 });

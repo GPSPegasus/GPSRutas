@@ -12,7 +12,7 @@ class Group extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price','range',
+        'name', 'price','range'
    ];
 
    protected $table = 'group_vehicle';

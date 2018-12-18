@@ -13,7 +13,7 @@ class VehicleController extends Controller
         try{
             $request->validate([
                 'imei' => 'required|string',
-                'owner_vehicle_id' => 'required|string',
+                'owner_vehicle_id' => 'required|integer',
                 'device_count_id' => 'required|string'
             ]);
             $owner_vehicle = Owner::findOrFail($request->owner_vehicle_id);
@@ -47,8 +47,8 @@ class VehicleController extends Controller
     function changeState_Vehicle(Request $request){
         try{
             $request->validate([
-                'id'=>  'required|string',
-                'status_vehicle' => 'required|string'
+                'id'=>  'required|integer',
+                'status_vehicle' => 'required|integer'
             ]);
             $vehicle = Vehicle::findOrFail($request->id);
             $vehicle->status_vehicle = $request->status_vehicle;

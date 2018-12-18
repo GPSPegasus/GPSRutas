@@ -65,7 +65,7 @@ class GroupController extends Controller
     function get_Vehicle_Group(Request $request){
         try{
             $request->validate([
-                'group_id' => 'required|string',
+                'group_id' => 'required|integer',
             ]);
             $vehicles = Vehicle::where('group_id', $request->group_id)
                ->get();
@@ -80,8 +80,8 @@ class GroupController extends Controller
     function remove_Vehicle_Group(Request $request){
         try{
             $request->validate([
-                'group_id' => 'required|string',
-                'vehicle_id' => 'required|string'
+                'group_id' => 'required|integer',
+                'vehicle_id' => 'required|integer'
             ]);
             $vehicle = Vehicle::findOrFail($request->vehicle_id);
             $vehicle->group_id = null;
@@ -99,7 +99,7 @@ class GroupController extends Controller
     function  add_Vehicles(Request $request){
         try{
             $request->validate([
-                'group_id' => 'required|string',
+                'group_id' => 'required|integer',
                 'vehicles_id' => 'required|array'
             ]);
             $group=Group::findOrFail($request->group_id);
@@ -122,7 +122,7 @@ class GroupController extends Controller
     function getAll_Geofences_Group(Request $request){
         try{
             $request->validate([
-                'group_id' => 'required|string',
+                'group_id' => 'required|integer',
             ]);
             $geofences = Geofence::where('group_id', $request->group_id)
                ->get();

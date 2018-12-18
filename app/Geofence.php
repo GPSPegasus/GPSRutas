@@ -12,7 +12,7 @@ class Geofence extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'latitude','longitude','group_id'
+        'name', 'latitude','longitude','radio','group_id'
    ];
 
    protected $table = 'geofence';

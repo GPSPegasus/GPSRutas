@@ -18,6 +18,7 @@ class CreateGeofenceTable extends Migration
             $table->string('name');
             $table->string('latitude');
             $table->string('longitude');
+            $table->unsignedInteger('radio');
             $table->unsignedInteger('group_id');
             $table->foreign('group_id')->references('id')->on('group_vehicle');
             $table->timestamps();

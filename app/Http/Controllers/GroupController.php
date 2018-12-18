@@ -34,6 +34,7 @@ class GroupController extends Controller
                 'name'=> $geofence_["name"],
                 'latitude'=>$geofence_["latitude"],
                 'longitude'=>$geofence_["longitude"],
+                'radio'=>$geofence_["radio"],
                 'group_id'=>$group->id
             ]);
             $geofence->save();

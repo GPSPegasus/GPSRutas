@@ -53,6 +53,8 @@ Route::group([
           Route::put('add_Vehicles', 'GroupController@add_Vehicles');  
           Route::get('getAll_Geofences_Group', 'GroupController@getAll_Geofences_Group');    
          
+          //Card
+          Route::put('create_Cards_Vehicle', 'CardController@create_Cards_Vehicle');
 
          
     });

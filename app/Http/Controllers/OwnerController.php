@@ -50,7 +50,7 @@ class OwnerController extends Controller
                 $user=User::findOrFail($owner->user_id);
                 array_push($arr_owners_vechicle,         
                     [
-                     'id' =>  $user['id'],
+                     'id' => $owner->id,
                      'name' => $user['name'],
                      'email' =>  $user['email'],                 
                     ]
